@@ -1,15 +1,15 @@
 {
   "name": "n8n-nodes-one-hub",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "n8n community node for One-Hub responses, file handling, folder management, and sync jobs",
   "license": "MIT",
   "homepage": "",
   "keywords": [
     "n8n-community-node-package"
   ],
-  "author": { 
-    "name": "Forstner Software Solutions", 
-    "email": "karl@forstner-solutions.at" 
+  "author": {
+    "name": "Forstner Software Solutions",
+    "email": "karl@forstner-solutions.at"
   },
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
     "release-it": "^19.0.4",
     "typescript": "5.9.2"
   },
-  "peerDependencies": { 
-    "n8n-workflow": "*" 
+  "peerDependencies": {
+    "n8n-workflow": "*"
   }
 }
