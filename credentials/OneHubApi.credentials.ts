@@ -10,8 +10,8 @@ export class OneHubApi implements ICredentialType {
 	displayName = 'One-Hub API';
 
 	icon: ICredentialType['icon'] = {
-		light: 'file:oneHub.svg',
-		dark: 'file:oneHub.dark.svg',
+		light: 'file:../icons/oneHub.svg',
+		dark: 'file:../icons/oneHub.dark.svg',
 	};
 
 	// Link to your community node's README

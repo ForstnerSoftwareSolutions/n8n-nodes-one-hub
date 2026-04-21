@@ -10,18 +10,11 @@ import {
 	type INodeTypeDescription,
 } from 'n8n-workflow';
 
-declare const global: {
-	FormData?: new () => {
-		append: (name: string, value: unknown, fileName?: string) => void;
-	};
-	Blob?: new (parts: unknown[], options?: { type?: string }) => unknown;
-};
-
 export class OneHub implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'One-Hub',
 		name: 'oneHub',
-		icon: { light: 'file:oneHub.svg', dark: 'file:oneHub.dark.svg' },
+		icon: { light: 'file:../../icons/oneHub.svg', dark: 'file:../../icons/oneHub.dark.svg' },
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
@@ -262,20 +255,16 @@ export class OneHub implements INodeType {
 					const binaryBuffer = await this.helpers.getBinaryDataBuffer(itemIndex, binaryPropertyName);
 					const fileName = fileNameOverride || binaryData.fileName || 'file';
 
-					if (!global.FormData || !global.Blob) {
-						throw new NodeOperationError(this.getNode(), 'FormData/Blob are not available in this runtime.', {
-							itemIndex,
-						});
-					}
-
-					const formData = new global.FormData();
+					const formData = new FormData();
 					formData.append('ChatId', chatId);
 					formData.append('FileName', fileName);
-
-					const filePart = new global.Blob([binaryBuffer], {
-						type: binaryData.mimeType || 'application/octet-stream',
-					});
-					formData.append('File', filePart, fileName);
+					formData.append(
+						'File',
+						new Blob([binaryBuffer], {
+							type: binaryData.mimeType || 'application/octet-stream',
+						}),
+						fileName,
+					);
 
 					if (path) {
 						formData.append('Path', path);
@@ -285,7 +274,7 @@ export class OneHub implements INodeType {
 						method: 'POST' as IHttpRequestMethods,
 						url: '/api/v1/extern/file',
 						baseURL: fileBaseUrl,
-						body: formData as unknown as IHttpRequestOptions['body'],
+						body: formData,
 					};
 
 					responseData = await this.helpers.httpRequestWithAuthentication.call(
