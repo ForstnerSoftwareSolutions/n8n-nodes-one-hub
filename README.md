@@ -62,5 +62,3 @@ Use this node to build One-Hub automations with n8n.
 * In your On-Premise instance, the developer documentation is also available and describes the available parameters and node capabilities.
 
 ## Version history
-
-_This is another optional section. If your node has multiple versions, include a short description of available versions and what changed, as well as any compatibility impact._
