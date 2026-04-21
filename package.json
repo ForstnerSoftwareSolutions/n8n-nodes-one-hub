@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-one-hub",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "n8n community node for One-Hub responses, file handling, folder management, and sync jobs",
   "license": "MIT",
   "homepage": "",
