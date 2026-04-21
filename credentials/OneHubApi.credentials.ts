@@ -1,5 +1,7 @@
 import type {
 	IAuthenticateGeneric,
+	Icon,
+	ICredentialTestRequest,
 	ICredentialType,
 	INodeProperties,
 } from 'n8n-workflow';
@@ -9,7 +11,7 @@ export class OneHubApi implements ICredentialType {
 
 	displayName = 'One-Hub API';
 
-	icon: ICredentialType['icon'] = {
+	icon: Icon = {
 		light: 'file:../icons/oneHub.svg',
 		dark: 'file:../icons/oneHub.dark.svg',
 	};
@@ -17,7 +19,7 @@ export class OneHubApi implements ICredentialType {
 	// Link to your community node's README
 	documentationUrl = 'https://github.com/one-hub/n8n-nodes-one-hub#credentials';
 
-	test: ICredentialType['test'] = {
+	test: ICredentialTestRequest = {
 		request: {
 			baseURL: '={{$credentials.baseUrlMode === "onPremise" ? $credentials.fileBaseUrl : "https://file.api.one-hub.at"}}',
 			url: '/api/v1/extern/auth/test',
