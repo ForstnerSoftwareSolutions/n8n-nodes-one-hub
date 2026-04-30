@@ -53,7 +53,24 @@ The node should work with every n8n version.
 
 ## Usage
 
-Use this node to build One-Hub automations with n8n.
+### Example: Send Question
+
+Use this operation to ask One-Hub a question and receive a grounded answer with sources.
+
+Expected **Chat ID** format:
+
+* UUID/GUID string, for example: `123e4567-e89b-12d3-a456-426614174000`
+
+Sample node configuration:
+
+* Resource: `Response`
+* Operation: `Send Question`
+* Chat ID: `123e4567-e89b-12d3-a456-426614174000`
+* Input: `Which Jira issues have the status "In Progress"?`
+
+What the response includes:
+
+* The generated answer text from One-Hub
 
 ## Resources
 

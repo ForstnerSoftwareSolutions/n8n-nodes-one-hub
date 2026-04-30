@@ -1,11 +1,13 @@
 import {
 NodeConnectionTypes,
+NodeApiError,
 NodeOperationError,
 type IExecuteFunctions,
 type IDataObject,
 type INodeExecutionData,
 type INodeType,
 type INodeTypeDescription,
+type JsonObject,
 } from 'n8n-workflow';
 import { executeFileDelete } from './file/delete';
 import { executeFileUpload } from './file/upload';
@@ -271,7 +273,7 @@ pairedItem: itemIndex,
 continue;
 }
 
-throw error;
+throw new NodeApiError(this.getNode(), error as JsonObject, { itemIndex });
 }
 }
 
